@@ -1,0 +1,44 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js -i
+
+PATH: 
+  C:\Users\carlos.casanova_warr\bin;C:\Users\carlos.casanova_warr\AppData\Local\Programs\Git\mingw64\bin;C:\Users\carlos.casanova_warr\AppData\Local\Programs\Git\usr\local\bin;C:\Users\carlos.casanova_warr\AppData\Local\Programs\Git\usr\bin;C:\Users\carlos.casanova_warr\AppData\Local\Programs\Git\usr\bin;C:\Users\carlos.casanova_warr\AppData\Local\Programs\Git\mingw64\bin;C:\Users\carlos.casanova_warr\AppData\Local\Programs\Git\usr\bin;C:\Users\carlos.casanova_warr\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\dotnet;C:\ProgramData\chocolatey\bin;C:\src\flutter\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Users\carlos.casanova_warr\AppData\Local\Microsoft\WindowsApps;C:\Users\carlos.casanova_warr\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\carlos.casanova_warr\AppData\Local\Programs\Git\cmd;C:\src\flutter\bin;C:\Users\carlos.casanova_warr\AppData\Roaming\npm;C:\Users\carlos.casanova_warr\AppData\Local\Yarn\bin;C:\Users\carlos.casanova_warr\AppData\Local\Programs\Git\usr\bin\vendor_perl;C:\Users\carlos.casanova_warr\AppData\Local\Programs\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.12.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: self-signed certificate in certificate chain
+      at TLSSocket.onConnectSecure (node:_tls_wrap:1538:34)
+      at TLSSocket.emit (node:events:513:28)
+      at TLSSocket._finishInit (node:_tls_wrap:952:8)
+      at ssl.onhandshakedone (node:_tls_wrap:733:12)
+
+npm manifest: 
+  {
+    "name": "desafio-everest",
+    "version": "1.0.0",
+    "scripts": {
+      "start": "nodemon ./src/index.js"
+    },
+    "main": "index.js",
+    "author": "Junior Alves <junior.alves@warren.com.br>",
+    "license": "MIT",
+    "dependencies": {
+      "express": "^4.17.3",
+      "nodemon": "^2.0.15"
+    },
+    "repository": "https://github.com/warrenbrasil/accelerate-everest-node-challenge.git"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
