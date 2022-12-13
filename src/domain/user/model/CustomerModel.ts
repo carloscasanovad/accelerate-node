@@ -1,5 +1,20 @@
+import { CustomerInfo } from "../../../protocols";
+
 export class Customer {
-  constructor(body) {
+  full_name: string;
+  email: string;
+  email_confirmation: string;
+  cpf: string;
+  cellphone: string;
+  birthdate: Date;
+  email_sms: boolean;
+  whatsapp: boolean;
+  country: string;
+  city: string;
+  postal_code: string;
+  address: string;
+  number: number;
+  constructor(body: CustomerInfo) {
     this.full_name = body.full_name;
     this.email = body.email;
     this.email_confirmation = body.email_confirmation;

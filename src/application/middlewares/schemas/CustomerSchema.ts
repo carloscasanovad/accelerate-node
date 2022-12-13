@@ -1,6 +1,7 @@
 import Joi from "joi";
+import { CustomerInfo } from "../../../protocols";
 
-export const customerSchema = Joi.object({
+export const customerSchema = Joi.object<CustomerInfo>({
   full_name: Joi.string().required(),
   email: Joi.string().email().required(),
   email_confirmation: Joi.string().valid(Joi.ref("email")).required(),
