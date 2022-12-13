@@ -10,9 +10,8 @@ function validate(schema: ObjectSchema, type: "body") {
   return (req: Request, res: Response, next: NextFunction) => {
     const { error } = schema.validate(req[type], { abortEarly: false });
     if (error) {
-      return res
-        .status(httpStatus.BAD_REQUEST)
-        .send(error.details.map((e) => e.message));
+      const errorMessages = error.details.map((e) => e.message);
+      return res.status(httpStatus.BAD_REQUEST).send(errorMessages);
     }
     next();
   };
