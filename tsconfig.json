@@ -8,9 +8,15 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "rootDirs": ["src", "tests"],
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
+      "@presentation/*": ["presentation/*"],
+      "@domain/*": ["domain/*"],
+      "@application/*": ["application/*"],
+      "@routes/*": ["presentation/routes/*"],
+      "@middlewares/*": ["application/middlewares/*"],
+      "@controllers/*": ["application/controllers/*"]
     },
     "plugins": [
       {

@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { Customer } from "../../domain/user/model/CustomerModel";
+import { Customer } from "@domain/user/model/CustomerModel";
 import { CustomerInfo } from "@/protocols";
 import httpStatus from "http-status";
 
