@@ -13,7 +13,6 @@ function validate(schema: ObjectSchema, type: "body") {
       const errorMessages = error.details.map((e) => e.message);
       return res.status(httpStatus.BAD_REQUEST).send(errorMessages);
     }
-    const a = 21;
     next();
   };
 }
