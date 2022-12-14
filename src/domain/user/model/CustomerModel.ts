@@ -1,4 +1,4 @@
-import { CustomerInfo } from "../../../protocols";
+import { CustomerInfo } from "@/protocols";
 
 export class Customer {
   full_name: string;

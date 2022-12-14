@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { CustomerInfo } from "../../../protocols";
+import { CustomerInfo } from "@/protocols";
 
 export const customerSchema = Joi.object<CustomerInfo>({
   full_name: Joi.string().required(),

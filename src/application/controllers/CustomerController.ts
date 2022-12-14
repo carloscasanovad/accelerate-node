@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
-import { Customer } from "../../domain/user/model/CustomerModel.js";
-import { CustomerInfo } from "../../protocols.js";
+import { Customer } from "../../domain/user/model/CustomerModel";
+import { CustomerInfo } from "@/protocols";
 import httpStatus from "http-status";
 
 export class CustomerController {
