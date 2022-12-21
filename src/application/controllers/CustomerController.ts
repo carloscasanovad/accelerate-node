@@ -1,18 +1,21 @@
 import { Response, Request } from "express";
 import { CustomerInfo } from "@/protocols";
-import { UserRepository } from "../repositories/UserRepository";
 import httpStatus from "http-status";
+import { ICreateUserService } from "@/domain/services/CustomerService";
+import { injectable, inject } from "tsyringe";
+import { IRoutesController } from "@/presentation/routes/Controller";
 
-export class CustomerController {
-  private userRepository: UserRepository;
-
-  constructor(userRepository: UserRepository) {
-    this.userRepository = userRepository;
+@injectable()
+export class CustomerController implements IRoutesController {
+  constructor(
+    @inject("CreateUserService") private createUserService: ICreateUserService
+  ) {
+    this.createUserService = createUserService;
   }
 
-  createUser(req: Request, res: Response) {
+  handle(req: Request, res: Response): Response {
     const customerInfo = req.body as CustomerInfo;
-    const newCustomer = this.userRepository.createUser(customerInfo);
+    const newCustomer = this.createUserService.execute(customerInfo);
     return res
       .status(httpStatus.CREATED)
       .send({ status: "success", customer: newCustomer });

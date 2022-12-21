@@ -14,9 +14,11 @@
       "@presentation/*": ["presentation/*"],
       "@domain/*": ["domain/*"],
       "@application/*": ["application/*"],
+      "@persistence/*": ["persistence/*"],
       "@routes/*": ["presentation/routes/*"],
       "@middlewares/*": ["application/middlewares/*"],
-      "@controllers/*": ["application/controllers/*"]
+      "@controllers/*": ["application/controllers/*"],
+      "@repositories/*": ["persistence/repositories/*"]
     },
     "plugins": [
       {
