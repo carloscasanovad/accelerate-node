@@ -3,6 +3,7 @@ import { Customer } from "@domain/user/model/CustomerModel";
 import { CustomerInfo } from "@/protocols";
 import httpStatus from "http-status";
 
+
 export class CustomerController {
   createUser(req: Request, res: Response) {
     const customerInfo = req.body as CustomerInfo;
