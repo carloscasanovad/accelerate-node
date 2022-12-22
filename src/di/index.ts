@@ -1,5 +1,5 @@
-import { CustomerController } from "@/application/controllers/CustomerController";
-import controllerAdapterMiddleware from "@/application/middlewares/ControllerAdapterMiddleware";
+import { CustomerController } from "@controllers/CustomerController";
+import controllerAdapterMiddleware from "@middlewares/ControllerAdapterMiddleware";
 import {
   ICreateUserService,
   CreateUserService,

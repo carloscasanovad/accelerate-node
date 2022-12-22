@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { container } from "@/di";
-import { CustomerRouter } from "./CustomerRoute";
+import { CustomerRouter } from "@routes/CustomerRoute";
 
 const router = Router();
 const customerRouter = container.resolve(CustomerRouter);

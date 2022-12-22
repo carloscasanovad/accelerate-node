@@ -1,4 +1,4 @@
-import { Customer } from "@/domain/user/model/CustomerModel";
+import { Customer } from "@domain/user/model/CustomerModel";
 import { CustomerInfo } from "@/protocols";
 
 export interface ICustomerRepository {

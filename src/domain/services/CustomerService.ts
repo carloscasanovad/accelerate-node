@@ -1,7 +1,7 @@
-import { CustomerRepository } from "@/persistence/repositories/UserRepository";
+import { CustomerRepository } from "@repositories/UserRepository";
 import { CustomerInfo } from "@/protocols";
 import { injectable, inject } from "tsyringe";
-import { Customer } from "../user/model/CustomerModel";
+import { Customer } from "@domain/user/model/CustomerModel";
 
 //Clase pode receber injeções desde qualquer canto com o uso do
 // container ou resolver do tsyringe

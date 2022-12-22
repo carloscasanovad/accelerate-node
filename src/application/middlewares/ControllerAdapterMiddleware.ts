@@ -1,4 +1,4 @@
-import { IRoutesController } from "@/presentation/routes/Controller";
+import { IRoutesController } from "@routes/Controller";
 import { Request, Response } from "express";
 
 export default function controllerAdapterMiddleware(controller: IRoutesController) {
