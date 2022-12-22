@@ -3,7 +3,7 @@ import { CustomerController } from "@controllers/CustomerController";
 import { customerSchema } from "@middlewares/schemas/CustomerSchema";
 import { validateBody } from "@middlewares/ValidatorMiddleware";
 import { injectable, inject } from "tsyringe";
-import { ControllerAdapterType } from "@/utils/types";
+import { ControllerAdapterType } from "@/protocols";
 
 @injectable()
 export class CustomerRouter {

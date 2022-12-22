@@ -4,7 +4,7 @@ import {
   ICreateUserService,
   CreateUserService,
 } from "@/domain/services/CustomerService";
-import { ControllerAdapterType } from "@/utils/types";
+import { ControllerAdapterType } from "@/protocols";
 import {
   ICustomerRepository,
   CustomerRepository,
