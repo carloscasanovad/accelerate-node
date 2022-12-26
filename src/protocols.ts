@@ -1,3 +1,6 @@
+import { IRoutesController } from "@routes/Controller";
+import { Request, Response } from "express";
+
 export type CustomerInfo = {
   full_name: string;
   email: string;
@@ -13,3 +16,7 @@ export type CustomerInfo = {
   address: string;
   number: number;
 };
+
+export type ControllerAdapterType = (
+  controller: IRoutesController
+) => (req: Request, res: Response) => Response;

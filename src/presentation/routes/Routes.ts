@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { customerRoute } from "./CustomerRoute";
+import { container } from "@/di";
+import { CustomerRouter } from "@routes/CustomerRoute";
 
 const router = Router();
-
-router.use("/customer", customerRoute);
+const customerRouter = container.resolve(CustomerRouter);
+router.use("/customer", customerRouter.setup());
 
 export default router;
