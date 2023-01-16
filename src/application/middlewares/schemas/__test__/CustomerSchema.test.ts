@@ -1,22 +1,14 @@
 import { faker } from "@faker-js/faker";
 import { customerSchema } from "../CustomerSchema";
+import { userMock } from "../../../../utils/mocks/UserMock";
 
 describe("CustomerSchema validation", () => {
-  const fakeEmail = faker.internet.email();
-  const generateValidInput = () => ({
-    full_name: faker.name.fullName(),
-    email: fakeEmail,
-    email_confirmation: fakeEmail,
-    cpf: faker.random.word(),
-    cellphone: faker.phone.number(),
-    birthdate: faker.date.birthdate(),
-    email_sms: false,
-    whatsapp: true,
-    country: faker.address.country(),
-    city: faker.address.cityName(),
-    postal_code: faker.address.zipCode(),
-    address: faker.address.streetAddress(),
-    number: faker.random.numeric(4),
+  const generateValidInput = () => userMock;
+  it("should return no error when input is valid", () => {
+    const input = generateValidInput();
+    const { error } = customerSchema.validate(input);
+
+    expect(error).toBeUndefined();
   });
 
   describe("When email_confirmation is not the same as email", () => {
@@ -59,12 +51,5 @@ describe("CustomerSchema validation", () => {
       });
       expect(error).toBeDefined();
     });
-  });
-
-  it("should return no error when input is valid", () => {
-    const input = generateValidInput();
-    const { error } = customerSchema.validate(input);
-
-    expect(error).toBeUndefined();
   });
 });
