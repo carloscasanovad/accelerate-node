@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon ./src/index.js",
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --ignore-watch node_modules src/app.ts",
-    "test": "jest"
+    "test": "jest --forceExit"
   },
   "author": "Junior Alves <junior.alves@warren.com.br>",
   "license": "MIT",
