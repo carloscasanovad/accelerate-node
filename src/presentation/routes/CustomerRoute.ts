@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { CustomerController } from "@controllers/CustomerController";
-import { customerSchema } from "@middlewares/schemas/CustomerSchema";
-import { validateBody } from "@middlewares/ValidatorMiddleware";
+import { CustomerController } from "application/controllers/CustomerController";
+import { customerSchema } from "../../application/middlewares/schemas/CustomerSchema";
+import { validateBody } from "../../application/middlewares/ValidatorMiddleware";
 import { injectable, inject } from "tsyringe";
 import { ControllerAdapterType } from "@/protocols";
 

@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for CustomerSchema.ts</title>
+    <title>Code coverage report for domain/services/CustomerService.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="prettify.css" />
-    <link rel="stylesheet" href="base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> CustomerSchema.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">domain/services</a> CustomerService.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/18</span>
+                <span class='fraction'>24/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>18/18</span>
+                <span class='fraction'>24/26</span>
             </div>
         
             
@@ -81,7 +81,15 @@
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -99,24 +107,40 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Joi from "joi";
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "reflect-metadata";
 import { CustomerInfo } from "@/protocols";
+import { injectable, inject } from "tsyringe";
+import { Customer } from "../../domain/user/model/CustomerModel";
+import { CustomerRepository } from "../../domain/CustomerRepository";
 &nbsp;
-export const customerSchema = Joi.object&lt;CustomerInfo&gt;({
-  full_name: Joi.string().required(),
-  email: Joi.string().email().required(),
-  email_confirmation: Joi.string().valid(Joi.ref("email")).required(),
-  cpf: Joi.string().required(),
-  cellphone: Joi.string().required(),
-  birthdate: Joi.date().required(),
-  email_sms: Joi.boolean().required(),
-  whatsapp: Joi.boolean().required(),
-  country: Joi.string().required(),
-  city: Joi.string().required(),
-  postal_code: Joi.string().required(),
-  address: Joi.string().required(),
-  number: Joi.number().required(),
-});
+//Clase pode receber injeções desde qualquer canto com o uso do
+// container ou resolver do tsyringe
+export interface ICreateUserService {
+  execute(customerInfo: CustomerInfo): Customer;
+}
+&nbsp;
+@injectable()
+export class CreateUserService implements ICreateUserService {
+  constructor(
+    //Aqui usando o @inject estamos passando o parametro que definimos
+    //no container do UserRepository, fazendo com que não possa
+    //ser mais instanciado, já que o registerSingleton fará isso por nós.
+    @inject("CustomerRepository")
+    private readonly customerRepository: CustomerRepository
+  ) {}
+&nbsp;
+  public <span class="fstat-no" title="function not covered" >execute(customerInfo: CustomerInfo) {</span>
+<span class="cstat-no" title="statement not covered" >    return this.customerRepository.createUser(customerInfo);</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -124,16 +148,16 @@ export const customerSchema = Joi.object&lt;CustomerInfo&gt;({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-01-16T16:43:01.326Z
+                at 2023-01-16T20:00:20.450Z
             </div>
-        <script src="prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="sorter.js"></script>
-        <script src="block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
