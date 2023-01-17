@@ -1,14 +1,14 @@
-import { CustomerController } from "@controllers/CustomerController";
-import controllerAdapterMiddleware from "@middlewares/ControllerAdapterMiddleware";
+import { CustomerController } from "../application/controllers/CustomerController";
+import controllerAdapterMiddleware from "../application/middlewares/ControllerAdapterMiddleware";
 import {
   ICreateUserService,
   CreateUserService,
-} from "@/domain/services/CustomerService";
+} from "../domain/services/CustomerService";
 import { ControllerAdapterType } from "@/protocols";
 import {
   ICustomerRepository,
   CustomerRepository,
-} from "@repositories/UserRepository";
+} from "../domain/CustomerRepository";
 import { container } from "tsyringe";
 
 //Fazendo uma injeção, o registerSingleton nós ajuda a instanciar a classe

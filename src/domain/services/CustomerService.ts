@@ -1,7 +1,8 @@
-import { CustomerRepository } from "@repositories/UserRepository";
+import "reflect-metadata";
 import { CustomerInfo } from "@/protocols";
 import { injectable, inject } from "tsyringe";
-import { Customer } from "@domain/user/model/CustomerModel";
+import { Customer } from "../../domain/user/model/CustomerModel";
+import { CustomerRepository } from "../../domain/CustomerRepository";
 
 //Clase pode receber injeções desde qualquer canto com o uso do
 // container ou resolver do tsyringe
