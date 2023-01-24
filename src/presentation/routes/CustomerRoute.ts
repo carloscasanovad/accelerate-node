@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { CustomerController } from "application/controllers/CustomerController";
+import { CustomerController } from "../../application/controllers/CustomerController";
 import { customerSchema } from "../../application/middlewares/schemas/CustomerSchema";
 import { validateBody } from "../../application/middlewares/ValidatorMiddleware";
 import { injectable, inject } from "tsyringe";
-import { ControllerAdapterType } from "@/protocols";
+import { ControllerAdapterType } from "../../protocols";
 
 @injectable()
 export class CustomerRouter {
@@ -20,6 +20,7 @@ export class CustomerRouter {
       validateBody(customerSchema),
       this.controllerAdapter(this.customerController)
     );
+
     return this.router;
   }
 }

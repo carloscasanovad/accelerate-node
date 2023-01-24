@@ -10,6 +10,8 @@ import {
   CustomerRepository,
 } from "../domain/CustomerRepository";
 import { container } from "tsyringe";
+import { DocsController } from "@/presentation/docs/DocsController";
+import { DocsService } from "@/presentation/docs/DocsService";
 
 //Fazendo uma injeção, o registerSingleton nós ajuda a instanciar a classe
 //e faz com que somente tenhamos uma instancia dela em todo nosso projeto.
@@ -33,5 +35,10 @@ childContainer.registerSingleton<CustomerController>(
 childContainer.register<ControllerAdapterType>("ControllerAdapter", {
   useValue: controllerAdapterMiddleware,
 });
+childContainer.registerSingleton<DocsController>(
+  "DocsController",
+  DocsController
+);
+childContainer.registerSingleton<DocsService>("DocsService", DocsService);
 
 export { childContainer as container };

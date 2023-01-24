@@ -1,0 +1,133 @@
+openapi: 3.0.3
+info:
+  title: Everest Nodejs
+  description: This is a sample documentation for the Accelerate Everest in order to
+    make a POC of Swagger.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: carlos.casanova@warren.com.br
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+servers:
+  - url: http://localhost:3000/docs
+tags:
+  - name: customer
+    description: Customer routes
+paths:
+  /customer:
+    post:
+      tags:
+        - customer
+      summary: Create a new customer
+      description: Create a new customer on db
+      operationId: customer
+      requestBody:
+        description: Create new customer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+        required: true
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'          
+        '400':
+          description: Bad request
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+components:
+  schemas:
+    Customer:
+        type: object
+        properties:
+          full_name:
+            type: string
+            example: Carlos
+          email:
+            type: string
+            example: carlos@warren.com.br
+          email_confirmation:
+            type: string
+            example: carlos@warren.com.br
+          cpf:
+            type: string
+            example: 999.888.777-00
+          cellphone:
+            type: string
+            example: 98860-8094
+          birthdate:
+            type: string
+            example: 12-04-2023
+          email_sms:
+            type: boolean
+          whatsapp:
+            type: boolean
+          country:
+            type: string
+            example: brazil
+          city:
+            type: string
+            example: blumenau
+          postal_code:
+            type: string
+            example: 90000-000
+          address:
+            type: string
+            example: rua são joão
+          number:
+            type: string
+            example: 999 apt. 101
+    CustomerResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        customer:
+          type: object
+          properties:
+            full_name:
+              type: string
+              example: Carlos
+            email:
+              type: string
+              example: carlos@warren.com.br
+            email_confirmation:
+              type: string
+              example: carlos@warren.com.br
+            cpf:
+              type: string
+              example: 999.888.777-00
+            cellphone:
+              type: string
+              example: 98860-8094
+            birthdate:
+              type: string
+              example: 12-04-2023
+            email_sms:
+              type: boolean
+            whatsapp:
+              type: boolean
+            country:
+              type: string
+              example: brazil
+            city:
+              type: string
+              example: blumenau
+            postal_code:
+              type: string
+              example: 90000-000
+            address:
+              type: string
+              example: rua são joão
+            number:
+              type: string
+              example: 999 apt. 101
