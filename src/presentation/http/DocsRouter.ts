@@ -1,12 +1,13 @@
-import { inject, injectable } from "tsyringe";
-import { DocsController } from "./DocsController";
+import { tokens } from "@/di/tokens";
 import { Router } from "express";
+import { inject, injectable } from "tsyringe";
+import { DocsController } from "../http/DocsController";
 
 @injectable()
 export class DocsRouter {
   private router = Router();
   constructor(
-    @inject("DocsController")
+    @inject(tokens.DocsController)
     private docsController: DocsController
   ) {}
   public setup(): Router {

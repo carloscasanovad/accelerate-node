@@ -4,11 +4,13 @@ import httpStatus from "http-status";
 import { ICreateUserService } from "@services/CustomerService";
 import { injectable, inject } from "tsyringe";
 import { IRoutesController } from "@routes/Controller";
+import { tokens } from "@/di/tokens";
 
 @injectable()
 export class CustomerController implements IRoutesController {
   constructor(
-    @inject("CreateUserService") private createUserService: ICreateUserService
+    @inject(tokens.CreateUserService)
+    private createUserService: ICreateUserService
   ) {
     this.createUserService = createUserService;
   }

@@ -1,10 +1,11 @@
 import { inject, injectable } from "tsyringe";
 import { DocsService } from "./DocsService";
+import { tokens } from "@/di/tokens";
 
 @injectable()
 export class DocsController {
   constructor(
-    @inject("DocsService")
+    @inject(tokens.DocsService)
     private docsService: DocsService
   ) {
     this.docsService = docsService;

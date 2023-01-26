@@ -4,15 +4,16 @@ import { customerSchema } from "../../application/middlewares/schemas/CustomerSc
 import { validateBody } from "../../application/middlewares/ValidatorMiddleware";
 import { injectable, inject } from "tsyringe";
 import { ControllerAdapterType } from "../../protocols";
+import { tokens } from "@/di/tokens";
 
 @injectable()
 export class CustomerRouter {
   private router = Router();
   constructor(
-    @inject("CustomerController")
-    private customerController: CustomerController,
-    @inject("ControllerAdapter")
-    private controllerAdapter: ControllerAdapterType
+    @inject(tokens.ControllerAdapter)
+    private controllerAdapter: ControllerAdapterType,
+    @inject(tokens.CustomerController)
+    private customerController: CustomerController
   ) {}
   public setup(): Router {
     this.router.post(

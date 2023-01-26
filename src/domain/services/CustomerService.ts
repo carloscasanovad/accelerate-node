@@ -2,7 +2,8 @@ import "reflect-metadata";
 import { CustomerInfo } from "@/protocols";
 import { injectable, inject } from "tsyringe";
 import { Customer } from "../../domain/user/model/CustomerModel";
-import { CustomerRepository } from "../../domain/CustomerRepository";
+import { CustomerRepository } from "../../persistence/repositories/CustomerRepository";
+import { tokens } from "@/di/tokens";
 
 //Clase pode receber injeções desde qualquer canto com o uso do
 // container ou resolver do tsyringe
@@ -16,7 +17,7 @@ export class CreateUserService implements ICreateUserService {
     //Aqui usando o @inject estamos passando o parametro que definimos
     //no container do UserRepository, fazendo com que não possa
     //ser mais instanciado, já que o registerSingleton fará isso por nós.
-    @inject("CustomerRepository")
+    @inject(tokens.CustomerRepository)
     private readonly customerRepository: CustomerRepository
   ) {}
 

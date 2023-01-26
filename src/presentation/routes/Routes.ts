@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { container } from "../../di/index";
-import { CustomerRouter } from "../routes/CustomerRoute";
-import { DocsRouter } from "../docs/DocsRouter";
+import { CustomerRouter } from "./CustomerRouter";
+import { DocsRouter } from "../http/DocsRouter";
 
 const router = Router();
 const customerRouter = container.resolve(CustomerRouter);
