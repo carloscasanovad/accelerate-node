@@ -1,7 +1,9 @@
-import { IRoutesController } from "@routes/Controller";
+import { IEndPointController } from "@routes/Controller";
 import { Request, Response } from "express";
+import { ObjectId } from "mongodb";
 
-export type CustomerInfo = {
+export type ICustomerInfo = {
+  _id?: ObjectId;
   full_name: string;
   email: string;
   email_confirmation: string;
@@ -18,5 +20,5 @@ export type CustomerInfo = {
 };
 
 export type ControllerAdapterType = (
-  controller: IRoutesController
-) => (req: Request, res: Response) => Response;
+  controller: IEndPointController
+) => (req: Request, res: Response) => Response | Promise<Response>;

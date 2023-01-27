@@ -1,13 +1,37 @@
-import { Customer } from "@domain/user/model/CustomerModel";
-import { CustomerInfo } from "@/protocols";
+import { ICustomerInfo } from "@/protocols";
+import { inject, injectable } from "tsyringe";
+import { Collection, InsertOneResult, WithId } from "mongodb";
+import { tokens } from "@/di/tokens";
+import { IDatabaseClient } from "@/infrastructure/db/db";
 
 export interface ICustomerRepository {
-  createUser(customerInfo: CustomerInfo): Customer;
+  create(customerInfo: ICustomerInfo): Promise<InsertOneResult<Document>>;
+  list(): Promise<WithId<Document>[]>;
 }
 
+@injectable()
 export class CustomerRepository implements ICustomerRepository {
-  createUser(customerInfo: CustomerInfo): Customer {
-    //TODO: create user on database
-    return customerInfo;
+  private collection: Collection<Document>;
+  constructor(
+    @inject(tokens.MongoClient)
+    public database: IDatabaseClient
+  ) {
+    this.collection = database.getInstance().collection("customers");
+  }
+  public async create(customerInfo: ICustomerInfo) {
+    return this.collection.insertOne(customerInfo as any);
+  }
+
+  public async list(): Promise<WithId<Document>[]> {
+    console.log("Repository");
+    try {
+      const data = await this.collection.find().toArray();
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.log(error);
+      console.log('caiu no erro')
+      throw new Error();
+    }
   }
 }
