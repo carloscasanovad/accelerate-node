@@ -19,7 +19,7 @@ export class CustomerRepository implements ICustomerRepository {
     this.collection = database.getInstance().collection("customers");
   }
   public async create(customerInfo: ICustomerInfo) {
-    return this.collection.insertOne(customerInfo as any);
+    return await this.collection.insertOne(customerInfo as any);
   }
 
   public async list(): Promise<WithId<Document>[]> {
@@ -30,7 +30,7 @@ export class CustomerRepository implements ICustomerRepository {
       return data;
     } catch (error) {
       console.log(error);
-      console.log('caiu no erro')
+      console.log("caiu no erro");
       throw new Error();
     }
   }

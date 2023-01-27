@@ -13,8 +13,8 @@ export class ListCustomersService implements IListCustomersService {
     @inject(tokens.CustomerRepository)
     private customerRepository: CustomerRepository
   ) {}
-  public list(): Promise<WithId<Document>[]> {
+  public async list(): Promise<WithId<Document>[]> {
     console.log("Service")
-    return this.customerRepository.list();
+    return await this.customerRepository.list();
   }
 }
