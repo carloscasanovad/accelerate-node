@@ -15,7 +15,11 @@ export class CustomerRepository implements ICustomerRepository {
     this.collection = database.getInstance().collection("customers");
   }
   public async create(customerInfo: ICustomerInfo) {
-    return this.collection.insertOne(customerInfo);
+    try {
+      return await this.collection.insertOne(customerInfo);
+    } catch (error) {
+      throw new Error()
+    }
   }
 
   public async list(): Promise<WithId<Document>[]> {
