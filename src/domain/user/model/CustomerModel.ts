@@ -1,4 +1,4 @@
-import { CustomerInfo } from "@/protocols";
+import { ICustomerInfo } from "@/domain/customer/types/Customer";
 
 export class Customer {
   full_name: string;
@@ -14,7 +14,7 @@ export class Customer {
   postal_code: string;
   address: string;
   number: number;
-  constructor(body: CustomerInfo) {
+  constructor(body: ICustomerInfo) {
     this.full_name = body.full_name;
     this.email = body.email;
     this.email_confirmation = body.email_confirmation;

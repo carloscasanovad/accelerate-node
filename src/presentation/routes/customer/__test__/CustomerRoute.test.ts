@@ -1,7 +1,7 @@
 import httpStatus from "http-status";
-import app from "../../app";
+import app from "../../../../app";
 import supertest from "supertest";
-import { userMock } from "../../utils/mocks/UserMock";
+import { userMock } from "../../../../utils/mocks/UserMock";
 
 const server = supertest(app);
 

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
-export type RouteBase = (req: Request, res: Response) => Response;
+export type RouteBase = (req: Request, res: Response) => Promise<Response>;
 
-export interface IRoutesController {
+export interface IRouterController {
   handle: RouteBase;
 }

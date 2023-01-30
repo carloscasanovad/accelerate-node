@@ -1,16 +1,16 @@
-import { CustomerRepository } from "../../../domain/CustomerRepository";
+import { CustomerRepository } from "@/domain/customer/infrastructure/CustomerRepository";
 import { userMock } from "../../../utils/mocks/UserMock";
-import { CreateUserService } from "../CustomerService";
+import { CustomerService } from "../CustomerService";
 
 describe("CustomerService validation", () => {
   const customerRepository = new CustomerRepository();
-  const customerService = new CreateUserService(customerRepository);
+  const customerService = new CustomerService(customerRepository);
   it("should create a new user when function is called", () => {
     const spyCustomerRepository = jest
       .spyOn(CustomerRepository.prototype, "createUser")
       .mockReturnValueOnce(userMock);
 
-    const result = customerService.execute(userMock);
+    const result = customerService.createCustomer(userMock);
 
     expect(result).toBeTruthy();
     expect(spyCustomerRepository).toHaveBeenCalled();

@@ -1,44 +1,55 @@
-import { CustomerController } from "../application/controllers/CustomerController";
+import { CreateCustomerController } from "../presentation/controllers/CreateCustomerController";
 import controllerAdapterMiddleware from "../application/middlewares/ControllerAdapterMiddleware";
-import {
-  ICreateUserService,
-  CreateUserService,
-} from "../domain/services/CustomerService";
 import { ControllerAdapterType } from "@/protocols";
-import {
-  ICustomerRepository,
-  CustomerRepository,
-} from "../domain/CustomerRepository";
 import { container } from "tsyringe";
-import { DocsController } from "@/presentation/docs/DocsController";
-import { DocsService } from "@/presentation/docs/DocsService";
+import { DocsController } from "@/presentation/http/DocsController";
+import { DocsService } from "@/presentation/http/DocsService";
+import { tokens } from "./tokens";
+import MongoDBClient, { IDatabaseClient } from "@/infrastructure/db/db";
+import { ListCustomerController } from "@/presentation/controllers/ListCustomersController";
+import { DocsRouter } from "@/presentation/http/DocsRouter";
+import { CustomerRouter } from "@/presentation/routes/customer/CustomerRouter";
+import { MainRouter } from "@/presentation/routes/Router";
+import { ICustomerRepository } from "@/domain/customer/types/services/ICustomerRepository";
+import { CustomerRepository } from "@/domain/customer/infrastructure/CustomerRepository";
+import { ICustomerService } from "@/domain/customer/types/services/ICustomerService";
+import { CustomerService } from "@/application/services/CustomerService";
 
-//Fazendo uma injeção, o registerSingleton nós ajuda a instanciar a classe
-//e faz com que somente tenhamos uma instancia dela em todo nosso projeto.
-//Evitando assim o uso do new na UserRepository em algum outro lugar do codigo.
 const childContainer = container.createChildContainer();
 
+childContainer.registerSingleton<MainRouter>(tokens.MainRouter, MainRouter);
+childContainer.registerSingleton<CustomerRouter>(
+  tokens.CustomerRouter,
+  CustomerRouter
+);
 childContainer.registerSingleton<ICustomerRepository>(
-  "CustomerRepository",
+  tokens.CustomerRepository,
   CustomerRepository
 );
-childContainer.registerSingleton<ICreateUserService>(
-  "CreateUserService",
-  CreateUserService
+childContainer.registerSingleton<ICustomerService>(
+  tokens.CustomerService,
+  CustomerService
 );
-childContainer.registerSingleton<CustomerController>(
-  "CustomerController",
-  CustomerController
+childContainer.registerSingleton<CreateCustomerController>(
+  tokens.CreateCustomerController,
+  CreateCustomerController
 );
-//O register diz que o serviço dado deve ser utilizado quando a interface
-//está sendo injetada e a nova instancia será criada para cada singleton
-childContainer.register<ControllerAdapterType>("ControllerAdapter", {
+childContainer.registerSingleton<ListCustomerController>(
+  tokens.ListCustomerController,
+  ListCustomerController
+);
+childContainer.register<ControllerAdapterType>(tokens.ControllerAdapter, {
   useValue: controllerAdapterMiddleware,
 });
 childContainer.registerSingleton<DocsController>(
-  "DocsController",
+  tokens.DocsController,
   DocsController
 );
-childContainer.registerSingleton<DocsService>("DocsService", DocsService);
+childContainer.registerSingleton<DocsRouter>(tokens.DocsRouter, DocsRouter);
+childContainer.registerSingleton<DocsService>(tokens.DocsService, DocsService);
+childContainer.registerSingleton<IDatabaseClient>(
+  tokens.MongoClient,
+  MongoDBClient
+);
 
 export { childContainer as container };
