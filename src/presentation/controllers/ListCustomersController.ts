@@ -1,12 +1,12 @@
 import { tokens } from "@/di/tokens";
 import { Response, Request } from "express";
-import { IEndPointController } from "@/presentation/routes/Controller";
+import { IRouterController } from "@/presentation/routes/Controller";
 import httpStatus from "http-status";
 import { inject, injectable } from "tsyringe";
 import { ICustomerService } from "@/domain/customer/types/services/ICustomerService";
 
 @injectable()
-export class ListCustomerController implements IEndPointController {
+export class ListCustomerController implements IRouterController {
   constructor(
     @inject(tokens.CustomerService)
     private customerService: ICustomerService

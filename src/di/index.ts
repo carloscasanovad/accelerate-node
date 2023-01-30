@@ -9,7 +9,7 @@ import MongoDBClient, { IDatabaseClient } from "@/infrastructure/db/db";
 import { ListCustomerController } from "@/presentation/controllers/ListCustomersController";
 import { DocsRouter } from "@/presentation/http/DocsRouter";
 import { CustomerRouter } from "@/presentation/routes/customer/CustomerRouter";
-import { MainRouter } from "@/presentation/routes/Routes";
+import { MainRouter } from "@/presentation/routes/Router";
 import { ICustomerRepository } from "@/domain/customer/types/services/ICustomerRepository";
 import { CustomerRepository } from "@/domain/customer/infrastructure/CustomerRepository";
 import { ICustomerService } from "@/domain/customer/types/services/ICustomerService";

@@ -1,7 +1,7 @@
-import { IEndPointController } from "@routes/Controller";
+import { IRouterController } from "@routes/Controller";
 import { Request, Response } from "express";
 import { ObjectId } from "mongodb";
 
 export type ControllerAdapterType = (
-  controller: IEndPointController
+  controller: IRouterController
 ) => (req: Request, res: Response) => Response | Promise<Response>;

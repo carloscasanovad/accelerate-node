@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { container } from "../../di/index";
 import { CustomerRouter } from "./customer/CustomerRouter";
 import { DocsRouter } from "../http/DocsRouter";
 import { inject, injectable } from "tsyringe";
@@ -20,10 +19,3 @@ export class MainRouter {
     return this.router;
   }
 }
-
-// const router = Router();
-// const customerRouter = container.resolve(CustomerRouter);
-// const docsRouter = container.resolve(DocsRouter);
-// router.use("/customer", customerRouter.setup());
-// router.use("/docs", docsRouter.setup());
-// export default router;

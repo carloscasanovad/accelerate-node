@@ -4,7 +4,7 @@ import { validateBody } from "../../../application/middlewares/ValidatorMiddlewa
 import { injectable, inject } from "tsyringe";
 import { ControllerAdapterType } from "../../../protocols";
 import { tokens } from "@/di/tokens";
-import { IEndPointController } from "../Controller";
+import { IRouterController } from "../Controller";
 
 @injectable()
 export class CustomerRouter {
@@ -13,9 +13,9 @@ export class CustomerRouter {
     @inject(tokens.ControllerAdapter)
     private controllerAdapter: ControllerAdapterType,
     @inject(tokens.CreateCustomerController)
-    private createCustomerController: IEndPointController,
+    private createCustomerController: IRouterController,
     @inject(tokens.ListCustomerController)
-    private listCustomerController: IEndPointController
+    private listCustomerController: IRouterController
   ) {}
   public setup(): Router {
     this.router.post(

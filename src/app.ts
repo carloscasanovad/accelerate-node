@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import express from "express";
 import { container } from "@/di";
-import { MainRouter } from "./presentation/routes/Routes";
+import { MainRouter } from "./presentation/routes/Router";
 import { tokens } from "./di/tokens";
 import cors from "cors";
 import dotenv from "dotenv";
