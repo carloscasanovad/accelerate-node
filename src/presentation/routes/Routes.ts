@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { container } from "../../di/index";
-import { CustomerRouter } from "./CustomerRouter";
+import { CustomerRouter } from "./customer/CustomerRouter";
 import { DocsRouter } from "../http/DocsRouter";
 import { inject, injectable } from "tsyringe";
 import { tokens } from "@/di/tokens";

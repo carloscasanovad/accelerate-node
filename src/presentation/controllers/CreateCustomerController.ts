@@ -1,32 +1,29 @@
 import { Response, Request } from "express";
-import { ICustomerInfo } from "@/protocols";
 import httpStatus from "http-status";
-import { ICreateCustomerService } from "@/domain/services/CreateCustomerService";
 import { injectable, inject } from "tsyringe";
 import { IEndPointController } from "@routes/Controller";
 import { tokens } from "@/di/tokens";
+import { ICustomerService } from "@/domain/customer/types/services/ICustomerService";
+import { ICustomerInfo } from "@/domain/customer/types/Customer";
 
 @injectable()
 export class CreateCustomerController implements IEndPointController {
   constructor(
-    @inject(tokens.CreateCustomerService)
-    private createUserService: ICreateCustomerService
+    @inject(tokens.CustomerService)
+    private customerService: ICustomerService
   ) {
-    this.createUserService = createUserService;
+    this.customerService = customerService;
   }
 
   async handle(req: Request, res: Response): Promise<Response> {
     const customerInfo = req.body as ICustomerInfo;
-    console.log('siuuuuuuuuuuuuuuuu')
 
     try {
-      const newCustomer = await this.createUserService.create(customerInfo);
+      const newCustomer = await this.customerService.createCustomer(customerInfo);
       return res
         .status(httpStatus.CREATED)
         .send({ status: "success", customer: newCustomer });
     } catch (error) {
-      console.log('siuuuuuuuuuuuuuuuu')
-      console.log(error)
       return res.sendStatus(httpStatus.BAD_REQUEST);
     }
   }

@@ -1,4 +1,4 @@
-import { ICustomerInfo } from "@/protocols";
+import { ICustomerInfo } from "@/domain/customer/types/Customer";
 
 export class Customer {
   full_name: string;

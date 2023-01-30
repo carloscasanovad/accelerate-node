@@ -1,4 +1,4 @@
-import { CustomerRepository } from "../../../persistence/repositories/CustomerRepository";
+import { CustomerRepository } from "../../customer/infrastructure/CustomerRepository";
 import { userMock } from "../../../utils/mocks/UserMock";
 
 describe("CustomerRepository validation", () => {

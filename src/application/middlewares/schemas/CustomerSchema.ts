@@ -1,5 +1,5 @@
+import { ICustomerInfo } from "@/domain/customer/types/Customer";
 import Joi from "joi";
-import { ICustomerInfo } from "@/protocols";
 
 export const customerSchema = Joi.object<ICustomerInfo>({
   full_name: Joi.string().required(),

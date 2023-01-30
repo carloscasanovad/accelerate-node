@@ -8,8 +8,7 @@ export const tokens = {
   CustomerRepository: Symbol("CustomerRepository"),
 
   //Domain
-  CreateCustomerService: Symbol("CreateCustomerService"),
-  ListCustomersService: Symbol("ListCustomersService"),
+  CustomerService: Symbol("CustomerService"),
 
   //Presentation
   MainRouter: Symbol("MainRouter"),

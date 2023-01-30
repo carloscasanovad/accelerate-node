@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { customerSchema } from "../../application/middlewares/schemas/CustomerSchema";
-import { validateBody } from "../../application/middlewares/ValidatorMiddleware";
+import { customerSchema } from "../../../application/middlewares/schemas/CustomerSchema";
+import { validateBody } from "../../../application/middlewares/ValidatorMiddleware";
 import { injectable, inject } from "tsyringe";
-import { ControllerAdapterType } from "../../protocols";
+import { ControllerAdapterType } from "../../../protocols";
 import { tokens } from "@/di/tokens";
-import { IEndPointController } from "./Controller";
+import { IEndPointController } from "../Controller";
 
 @injectable()
 export class CustomerRouter {

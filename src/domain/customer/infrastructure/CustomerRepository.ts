@@ -1,13 +1,9 @@
-import { ICustomerInfo } from "@/protocols";
 import { inject, injectable } from "tsyringe";
-import { Collection, InsertOneResult, WithId } from "mongodb";
+import { Collection, WithId } from "mongodb";
 import { tokens } from "@/di/tokens";
 import { IDatabaseClient } from "@/infrastructure/db/db";
-
-export interface ICustomerRepository {
-  create(customerInfo: ICustomerInfo): Promise<InsertOneResult<Document>>;
-  list(): Promise<WithId<Document>[]>;
-}
+import { ICustomerRepository } from "../types/services/ICustomerRepository";
+import { ICustomerInfo } from "../types/Customer";
 
 @injectable()
 export class CustomerRepository implements ICustomerRepository {
@@ -19,18 +15,13 @@ export class CustomerRepository implements ICustomerRepository {
     this.collection = database.getInstance().collection("customers");
   }
   public async create(customerInfo: ICustomerInfo) {
-    return await this.collection.insertOne(customerInfo as any);
+    return this.collection.insertOne(customerInfo);
   }
 
   public async list(): Promise<WithId<Document>[]> {
-    console.log("Repository");
     try {
-      const data = await this.collection.find().toArray();
-      console.log(data);
-      return data;
+      return this.collection.find().toArray();
     } catch (error) {
-      console.log(error);
-      console.log("caiu no erro");
       throw new Error();
     }
   }
